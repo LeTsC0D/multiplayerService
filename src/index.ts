@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // app.use(cors());
 // const cors = require('cors');
 const corsOptions ={
-    origin:'https://facebookforfriend.netlify.app', 
+    origin:'http://localhost:3000', 
     credentials:true,            
     optionSuccessStatus:200
 }
