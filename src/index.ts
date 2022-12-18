@@ -3,7 +3,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-import * as cors from "cors";
+// import * as cors from "cors";
+const cors = require('cors');
 import "reflect-metadata";
 
 var indexRouter = require("./routes/index");
@@ -19,10 +20,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-const CORS = require("cors")({
-  origin: true,
-});
-app.use(CORS)
+// const CORS = require("cors")({
+//   origin: true,
+// });
+// app.use(CORS)
 // app.all("*", function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Credentials", true);
@@ -31,12 +32,12 @@ app.use(CORS)
 // });
 // app.use(cors());
 // const cors = require('cors');
-// const corsOptions ={
-//     origin:'https://multiplayergamee.netlify.app', 
-//     credentials:true,            
-//     optionSuccessStatus:200
-// }
-// app.use(cors(corsOptions));
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 app.use("/", indexRouter);
 
