@@ -19,14 +19,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+const CORS = require("cors")({
+  origin: true,
+});
+app.use(CORS)
+// app.all("*", function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header("Access-Control-Allow-Headers", "*");
+//   next();
+// });
 // app.use(cors());
 // const cors = require('cors');
-const corsOptions ={
-    origin:'https://multiplayergamee.netlify.app', 
-    credentials:true,            
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
+// const corsOptions ={
+//     origin:'https://multiplayergamee.netlify.app', 
+//     credentials:true,            
+//     optionSuccessStatus:200
+// }
+// app.use(cors(corsOptions));
 
 app.use("/", indexRouter);
 
